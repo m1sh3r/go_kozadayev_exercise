@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package car_assembly.v1;
+
+option go_package = "go-kozadayev-exercise/task3/api/proto;assemblyv1";
+
+
+service AssemblyService {
+  rpc AssembleCar(AssembleCarRequest) returns (AssembleCarResponse) {
+  }
+  rpc GetCarSpec(GetCarSpecRequest) returns (GetCarSpecResponse) {
+  }
+}
+
+message Engine {
+  int64 id = 1;
+  string name = 2;
+  int32 power = 3;
+  float volume = 4;
+}
+
+message Transmission {
+  int64 id = 1;
+  string type = 2;
+}
+
+message CarSpec {
+  int64 id = 1;
+  string brand = 2;
+  string model = 3;
+  int32 year = 4;
+  Engine engine = 5;
+  Transmission transmission = 6;
+}
+
+message AssembleCarRequest {
+  int64 car_id = 1;
+  int64 engine_id = 2;
+  int64 transmission_id = 3;
+}
+
+message AssembleCarResponse {
+  CarSpec car_spec = 1;
+}
+
+message GetCarSpecRequest {
+  int64 car_id = 1;
+}
+
+message GetCarSpecResponse {
+  CarSpec car_spec = 1;
+}
