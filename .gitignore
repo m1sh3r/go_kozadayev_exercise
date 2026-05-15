@@ -1,0 +1,43 @@
+# Скомпилированные бинарники Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Тестовые бинарники
+*.test
+
+# Выходные директории сборки
+bin/
+dist/
+
+# Кэш Go-инструментов
+/vendor/
+/go/pkg/
+
+# Окружение
+.env
+.env.*
+!.env.example
+
+# IDE и редакторы
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS-специфичные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Excel-экспорт (генерируется в runtime)
+*.xlsx
+
+# Журнал событий changelog (генерируется в runtime)
+changelog.log
+
+# Логи
+*.log
