@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package maintenance.v1;
+
+option go_package = "go-kozadayev-exercise/task10/api/proto;maintenancev1";
+
+
+service MaintenanceService {
+  rpc CreateWorkOrder(CreateWorkOrderRequest) returns (WorkOrder) {
+  }
+  rpc GetWorkOrder(GetWorkOrderRequest) returns (WorkOrder) {
+  }
+  rpc ExportToExcel(ExportRequest) returns (ExportResponse) {
+  }
+}
+
+message WorkOrder {
+  string id = 1;
+  string car_id = 2;
+  string description = 3;
+  float total_cost = 4;
+}
+
+message CreateWorkOrderRequest {
+  string car_id = 1;
+  string description = 2;
+  float total_cost = 3;
+}
+
+message GetWorkOrderRequest {
+  string id = 1;
+}
+
+message ExportRequest {}
+
+message ExportResponse {
+  string file_url = 1;
+}
