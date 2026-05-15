@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package dashboard.v1;
+
+option go_package = "go-kozadayev-exercise/task6/api/proto;dashboardv1";
+
+
+service DashboardService {
+  rpc GetDashboard(GetDashboardRequest) returns (GetDashboardResponse) {
+  }
+  
+  // CRUD
+  rpc CreateOwner(CreateOwnerRequest) returns (Owner);
+  rpc CreateCar(CreateCarRequest) returns (Car);
+  rpc CreateServiceRecord(CreateServiceRecordRequest) returns (ServiceRecord);
+}
+
+message Owner {
+  int64 id = 1;
+  string name = 2;
+}
+
+message Car {
+  int64 id = 1;
+  string brand = 2;
+  int64 owner_id = 3;
+}
+
+message ServiceRecord {
+  int64 id = 1;
+  int64 car_id = 2;
+  string description = 3;
+  int64 date = 4;
+}
+
+message GetDashboardRequest {
+  int64 owner_id = 1;
+}
+
+message CarDashboardEntry {
+  Car car = 1;
+  ServiceRecord last_service = 2;
+}
+
+message GetDashboardResponse {
+  Owner owner = 1;
+  repeated CarDashboardEntry cars = 2;
+}
+
+message CreateOwnerRequest { string name = 1; }
+message CreateCarRequest { string brand = 1; int64 owner_id = 2; }
+message CreateServiceRecordRequest { int64 car_id = 1; string description = 2; }

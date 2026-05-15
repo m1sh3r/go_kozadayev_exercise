@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS service_records;
+DROP TABLE IF EXISTS cars;
+DROP TABLE IF EXISTS owners;
