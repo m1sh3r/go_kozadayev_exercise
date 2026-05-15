@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package search_engine.v1;
+
+option go_package = "go-kozadayev-exercise/task7/api/proto;searchenginev1";
+
+
+service ContentService {
+  rpc CreateArticle(CreateArticleRequest) returns (Article) {
+  }
+  rpc GetArticle(GetArticleRequest) returns (Article) {
+  }
+}
+
+service SearchService {
+  rpc IndexArticle(IndexArticleRequest) returns (IndexArticleResponse);
+}
+
+message Article {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+  string author_id = 4;
+}
+
+message CreateArticleRequest {
+  string title = 1;
+  string content = 2;
+  string author_id = 3;
+}
+
+message GetArticleRequest {
+  string id = 1;
+}
+
+message IndexArticleRequest {
+  Article article = 1;
+}
+
+message IndexArticleResponse {
+  bool success = 1;
+}
