@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package smarthome.v1;
+
+option go_package = "go-kozadayev-exercise/task5/api/proto;smarthomev1";
+
+
+service SmartHomeService {
+  rpc AddReading(AddReadingRequest) returns (AddReadingResponse) {
+  }
+  rpc MonitorReadings(MonitorReadingsRequest) returns (stream Reading) {
+  }
+}
+
+message Reading {
+  string device_id = 1;
+  float value = 2;
+  int64 timestamp = 3;
+}
+
+message AddReadingRequest {
+  string device_id = 1;
+  float value = 2;
+}
+
+message AddReadingResponse {
+  bool success = 1;
+}
+
+message MonitorReadingsRequest {
+  string device_id = 1;
+}
