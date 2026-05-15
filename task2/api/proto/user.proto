@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package user.v1;
+
+option go_package = "go-kozadayev-exercise/task2/api/proto;userv1";
+
+
+service UserService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
+  }
+  rpc AddDocumentToUser(AddDocumentToUserRequest) returns (AddDocumentToUserResponse) {
+  }
+  rpc GetUserDocuments(GetUserDocumentsRequest) returns (GetUserDocumentsResponse) {
+  }
+}
+
+message User {
+  int64 id = 1;
+  string name = 2;
+}
+
+message Document {
+  int64 id = 1;
+  string title = 2;
+  int64 user_id = 3;
+}
+
+message CreateUserRequest {
+  string name = 1;
+}
+
+message CreateUserResponse {
+  User user = 1;
+}
+
+message AddDocumentToUserRequest {
+  int64 user_id = 1;
+  string title = 2;
+}
+
+message AddDocumentToUserResponse {
+  Document document = 1;
+}
+
+message GetUserDocumentsRequest {
+  int64 user_id = 1;
+}
+
+message GetUserDocumentsResponse {
+  repeated Document documents = 1;
+}
